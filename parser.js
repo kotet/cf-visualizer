@@ -56,7 +56,6 @@ function parse_primary(tokens) {
         // 関数呼び出し
         let name = getToken(tokens, parser_i).val;
         parser_i++;
-        console.log(name);
         return { type: "call", name: name, val: primitive_functions[name], arg: parse_primary(tokens) };
     }
 

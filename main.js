@@ -13,11 +13,19 @@ window.addEventListener("load", function() {
     fixYVal = document.getElementById("fix-y-val");
     functions["f0"] = {};
     generateFunctionList();
-    canv.addEventListener("mousemove", function(e) {
-        clientX = e.clientX;
-        clientY = e.clientY;
+    let moveevent = function(e) {
+        if (e.type == "touchmove") {
+            clientX = e.changedTouches[0].clientX * devicePixelRatio;
+            clientY = e.changedTouches[0].clientY * devicePixelRatio;
+        } else {
+            clientX = e.clientX * devicePixelRatio;
+            clientY = e.clientY * devicePixelRatio;
+        }
         draw();
-    });
+    }
+    canv.addEventListener("mousemove", moveevent);
+    canv.addEventListener("touchstart", moveevent);
+    canv.addEventListener("touchmove", moveevent);
     setInterval(resize, 500);
     setInterval(updateParams, 1000);
 });
@@ -30,7 +38,6 @@ function generateFunctionList() {
         let math = document.createElement("span");
         code.innerText = (name + " z").padEnd(10) + ": ";
         let textof = astprint(parse(tokenize(name + " z")));
-        console.log(textof);
         math.innerText = "$" + textof + "$";
         li.appendChild(code);
         li.appendChild(math);
@@ -73,7 +80,6 @@ function updateIndicator(z) {
 
 function updateFunction(elm) {
     let parent = elm.parentElement;
-    console.log(parent);
     constructAST(parent);
 }
 
