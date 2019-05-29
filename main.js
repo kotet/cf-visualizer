@@ -13,6 +13,9 @@ window.addEventListener("load", function() {
     fixYVal = document.getElementById("fix-y-val");
     functions["f0"] = {};
     generateFunctionList();
+    resize();
+    clientX = canvas.width / 2;
+    clientY = canvas.height / 2;
     let moveevent = function(e) {
         if (e.type == "touchmove") {
             clientX = e.changedTouches[0].clientX * devicePixelRatio;
