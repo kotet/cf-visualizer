@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script async src="//cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']], displayMath: [], processEscapes: true } });
+    </script>
+    <script src="Complex.js/complex.min.js"></script>
+    <script src="tokenizer.js"></script>
+    <script src="functions.js"></script>
+    <script src="parser.js"></script>
+    <script src="evaluator.js"></script>
+    <script src="astprinter.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="controll-panel">
+        <h1>Complex functions visualizer</h1>
+        <section>
+            <p id="z-indicator"></p>
+        </section>
+        <section id="function-cards">
+            <details open>
+                <summary>
+                    <h2>FUNCTIONS</h2>
+                </summary>
+                <button onclick="createCard()">NEW</button>
+                <div class="function-card" id="f0">
+                    <input type="text" value="log z" class="code-input" onchange="updateFunction(this)" />
+                    <div>
+                        <input type="color" value="#ff0000" class="color-picker">
+                        <button onclick="deleteCard(this)">DELETE</button>
+                    </div>
+                    <p class="mathjax-output"></p>
+                    <p class="function-indicator"></p>
+                </div>
+        </section>
+        <section>
+            <details>
+                <summary>
+                    <h2>FIX THE AXIS</h2>
+                </summary>
+                <input type="checkbox" id="fix-x" />$\mathrm{Re}(z) =$ <input type="number" value="0" step="0.1" class="input-number" id="fix-x-val" />
+                <input type="checkbox" id="fix-y" />$\mathrm{Im}(z) =$ <input type="number" value="0" step="0.1" class="input-number" id="fix-y-val" />
+            </details>
+        </section>
+        <section>
+            <details>
+                <summary>
+                    <h2>AVAILABLE FUNCTIONS</h2>
+                </summary>
+                <ul id="function-list"></ul>
+            </details>
+        </section>
+    </div>
+</body>
+
+<template id="function-card" style="visibility: hidden">
+    <div class="function-card">
+        <input type="text" value="log z" class="code-input" onchange="updateFunction(this)" />
+        <div>
+            <input type="color" value="#ff0000" class="color-picker">
+            <button onclick="deleteCard(this)">DELETE</button>
+        </div>
+        <p class="mathjax-output"></p>
+        <p class="function-indicator"></p>
+    </div>
+</template>
+
+</html>
