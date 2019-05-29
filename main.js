@@ -5,7 +5,7 @@ let fixX, fixY;
 let fixXVal, fixYVal;
 let functions = [];
 let FID = 1;
-const pix_unit = 120;
+let pix_unit = 120;
 window.addEventListener("load", function() {
     canv = document.getElementById("canvas");
     ctx = canv.getContext("2d");
@@ -72,6 +72,8 @@ function deleteCard(elm) {
 function updateParams() {
     fixX = document.getElementById("fix-x").checked;
     fixY = document.getElementById("fix-y").checked;
+    pix_unit = document.getElementById("scale").value;
+    draw();
 }
 
 function updateIndicator(z) {
@@ -120,7 +122,7 @@ function draw() {
         if (Number.isNaN(f) || Number.isNaN(f.re) || Number.isNaN(f.im))
             card.getElementsByClassName("function-indicator")[0].innerText = "<ERROR>";
         else
-            card.getElementsByClassName("function-indicator")[0].innerText = " = " + z.re.toFixed(3) + " + " + z.im.toFixed(3) + "i"
+            card.getElementsByClassName("function-indicator")[0].innerText = " = " + f.re.toFixed(3) + " + " + f.im.toFixed(3) + "i"
 
         let fpos = planeToCanvas(f);
         ctx.beginPath();
