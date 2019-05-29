@@ -42,7 +42,7 @@
                 </summary>
                 <button onclick="createCard()">NEW</button>
                 <div class="function-card" id="f0">
-                    <input type="text" value="log z" class="code-input" onchange="updateFunction(this)" />
+                    <input type="text" value="1 / log sin (z * 10) + 1" class="code-input" onchange="updateFunction(this)" />
                     <div>
                         <input type="color" value="#ff0000" class="color-picker">
                         <button onclick="deleteCard(this)">DELETE</button>
@@ -86,7 +86,7 @@
 
 <template id="function-card" style="visibility: hidden">
     <div class="function-card">
-        <input type="text" value="log z" class="code-input" onchange="updateFunction(this)" />
+        <input type="text" value="z" class="code-input" onchange="updateFunction(this)" />
         <div>
             <input type="color" value="#ff0000" class="color-picker">
             <button onclick="deleteCard(this)">DELETE</button>
